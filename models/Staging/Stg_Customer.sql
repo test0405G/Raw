@@ -1,10 +1,11 @@
-with Customer as 
+with final as 
 (
-    select  id AS Customer_id, 
-            FIRST_NAME AS FIRST_NAME,
-            LAST_NAME  AS LAST_NAME,
-            concat(LAST_NAME,FIRST_NAME) AS FULL_NAME
-    from    raw.jaffle_shop.customers
+    select 
+        id as customer_id,
+        first_name,
+        last_name,
+        concat(LAST_NAME,FIRST_NAME) AS full_name
+    from {{ source('jaffle_shop', 'customers') }}
+            
 )
-
-select * from Customer
+select * from final
