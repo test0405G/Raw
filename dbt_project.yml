@@ -38,5 +38,6 @@ models:
   Raw:
     staging:
       +materialized: view
+
     marts:
       +materialized: table
